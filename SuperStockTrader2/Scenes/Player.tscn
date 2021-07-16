@@ -4,6 +4,7 @@
 
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.5
+radial_segments = 48
 
 [sub_resource type="PrismMesh" id=2]
 size = Vector3( 0.2, 0.5, 0.5 )
