@@ -31,3 +31,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
 shape = SubResource( 3 )
+
+[node name="ChainGunTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="timeout" from="ChainGunTimer" to="." method="_on_ChainGunTimer_timeout"]

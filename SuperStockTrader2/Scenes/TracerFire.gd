@@ -13,5 +13,14 @@ func _physics_process(delta):
 func _on_TracerFire_body_shape_entered(body_id, body, body_shape, local_shape):
 	print(body.name)
 	if not body.name == "Player" and not body.is_in_group("ignore"):
+		print("hello")
 		queue_free() #delete the scene from tree
 	pass
+  
+
+func _on_TracerFire_body_entered(body):
+	print(body.name)
+	if not body.name == "Player" and not body.is_in_group("ignore"):
+		print("hello")
+		queue_free()
+	pass 
