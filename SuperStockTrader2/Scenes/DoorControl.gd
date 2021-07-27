@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_Area_body_entered(body):
-	if body.name == "Player":
+	if body.is_in_group("Player"):
 		$DoorBlocker/CollisionShape.disabled = true
 		$Door1withAnimation/AnimationPlayer.play("OpenDoor")
 	
@@ -26,7 +26,7 @@ func _on_Area_body_entered(body):
 
 
 func _on_Area_body_exited(body):
-	if body.name == "Player":
+	if body.is_in_group("Player"):
 		$DoorBlocker/CollisionShape.disabled = false
 		$Door1withAnimation/AnimationPlayer.play("CloseDoor")
 	
