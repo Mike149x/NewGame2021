@@ -60,6 +60,11 @@ func _physics_process(delta):
 		speed += acceleration
 		if speed > max_speed:
 			speed = max_speed
+	else:
+		speed -= acceleration
+		if speed < 0:
+			speed = 0
+	#print(speed)
 	
 	move_vector = input * speed
 	if move_vector != Vector3.ZERO:
