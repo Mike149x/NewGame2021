@@ -38,12 +38,12 @@ func _process(delta):
 	if Input.is_action_pressed("player_fire") and can_fire:
 		can_fire = false
 		var new_case = case.instance()
-		new_case.global_transform = $Position3D.global_transform
+		new_case.global_transform = $CaseEjector.global_transform
 		get_parent().add_child(new_case)
 		
 		#add tracer fire
 		var new_tracer = tracer.instance()
-		new_tracer.global_transform = $Position3D.global_transform
+		new_tracer.global_transform = $EndOfChainGun.global_transform
 		get_parent().add_child(new_tracer)
 		
 		#change timer
@@ -62,6 +62,10 @@ func _physics_process(delta):
 			speed = max_speed
 	
 	move_vector = input * speed
+	if move_vector != Vector3.ZERO:
+		$MainCharacter/AnimationPlayer.play("Run")
+	else:
+		$MainCharacter/AnimationPlayer.play("Idle")
 	move_and_slide(move_vector)
 
 	look_at_cursor()

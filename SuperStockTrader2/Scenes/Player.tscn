@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Movement.gd" type="Script" id=1]
+[ext_resource path="res://BlenderModels/MainCharacter.gltf" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.5
@@ -19,16 +20,21 @@ script = ExtResource( 1 )
 
 [node name="CapsuleMesh" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
+visible = false
 mesh = SubResource( 1 )
 material/0 = null
 
 [node name="PointDirection" type="MeshInstance" parent="."]
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 1, -1 )
+visible = false
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="Position3D" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1 )
+[node name="EndOfChainGun" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.116655, 1.06698, -1.6 )
+
+[node name="CaseEjector" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.348515, 1.06698, -0.791267 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
@@ -36,5 +42,8 @@ shape = SubResource( 3 )
 
 [node name="ChainGunTimer" type="Timer" parent="."]
 wait_time = 0.3
+
+[node name="MainCharacter" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.25, 0, -3.7749e-08, 0, 0.25, 0, 3.7749e-08, 0, -0.25, 0, 0, 0 )
 
 [connection signal="timeout" from="ChainGunTimer" to="." method="_on_ChainGunTimer_timeout"]
