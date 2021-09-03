@@ -22,6 +22,9 @@ func _physics_process(delta):
 		if $RayCast.get_collider() != null:
 			if $RayCast.get_collider().name == "Player":
 				move_and_slide(facing * move_speed * delta, Vector3.UP)
+				$SlowZombie/AnimationPlayer.play("Run")
+			else:
+				$SlowZombie/AnimationPlayer.play("Idle")
 
 func _on_Area_body_entered(body):
 	if body.name == "Player":
