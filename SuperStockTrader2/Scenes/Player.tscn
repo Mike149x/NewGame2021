@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Movement.gd" type="Script" id=1]
 [ext_resource path="res://BlenderModels/MainCharacter.gltf" type="PackedScene" id=2]
@@ -12,6 +12,9 @@ size = Vector3( 0.2, 0.5, 0.5 )
 [sub_resource type="CapsuleMesh" id=3]
 radius = 0.5
 radial_segments = 48
+
+[sub_resource type="CylinderShape" id=4]
+radius = 0.534723
 
 [node name="Player" type="KinematicBody" groups=[
 "Player",
@@ -46,4 +49,21 @@ visible = false
 mesh = SubResource( 3 )
 material/0 = null
 
+[node name="HitScan" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.1, -1.7 )
+enabled = true
+cast_to = Vector3( 0, 0, -10 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 4 )
+
+[node name="InvulnerabilityFrames" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="ChainGunTimer" to="." method="_on_ChainGunTimer_timeout"]
+[connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

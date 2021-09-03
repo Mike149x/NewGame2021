@@ -31,15 +31,16 @@ func get_health():
 	return health
 
 func get_ammo():
-	return ammo
+	return str(ammo)
 
 func get_lives():
-	return lives
+	return str(lives)
 
 func has_ammo():
 	return ammo > 0
 
-
+func reset():
+	health = health_max
 
 
 

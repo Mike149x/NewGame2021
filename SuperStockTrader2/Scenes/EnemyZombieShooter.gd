@@ -6,6 +6,7 @@ var follow_player = false
 var move_speed = 50
 var can_shoot = false
 onready var bullet = preload("res://Scenes/EnemyBullet.tscn")
+var health = 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +16,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func hit_zombie():
+	health -= 1
+	if health <= 0:
+		#play animation and yield until finished
+		#$SlowZombie/AnimationPlayer.play("Death")
+		#yield($SlowZombie/AnimationPlayer, "finished")
+		queue_free()
 
 func _physics_process(delta):
 	if follow_player == true:
