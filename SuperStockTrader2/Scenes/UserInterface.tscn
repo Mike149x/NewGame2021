@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://UserInterface.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Ammo Counter proper.png" type="Texture" id=2]
+[ext_resource path="res://Resources/heart proper.png" type="Texture" id=3]
+[ext_resource path="res://Resources/offworlderbb_ot/OffWorlderBB-Regular.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.972549, 0.137255, 0.137255, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 3
+border_width_bottom = 4
+border_color = Color( 0.682353, 0.231373, 0.231373, 1 )
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 0.282353 )
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[node name="UserInterface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AmmoCount" type="Label" parent="."]
+margin_left = 863.462
+margin_top = 19.0703
+margin_right = 999.462
+margin_bottom = 68.0703
+custom_fonts/font = SubResource( 1 )
+text = "x 1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AmmoCountPicture" type="TextureRect" parent="AmmoCount"]
+margin_left = -47.6759
+margin_top = 9.53517
+margin_right = -7.6759
+margin_bottom = 49.5352
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LifeCounter" type="Label" parent="."]
+margin_left = 75.6444
+margin_top = 71.4972
+margin_right = 211.644
+margin_bottom = 120.497
+custom_fonts/font = SubResource( 1 )
+text = "x 3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LifeCounterPicture" type="TextureRect" parent="LifeCounter"]
+margin_left = -47.6759
+margin_top = 11.1226
+margin_right = -7.6759
+margin_bottom = 51.1226
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 400.0
+margin_bottom = 60.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

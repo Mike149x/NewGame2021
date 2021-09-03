@@ -14,6 +14,10 @@ config/name="SuperStockTrader2"
 run/main_scene="res://Scenes/TestLevel.tscn"
 config/icon="res://Resources/icon.png"
 
+[autoload]
+
+PlayerStats="*res://Scripts/player_stats.gd"
+
 [input]
 
 ui_left={
