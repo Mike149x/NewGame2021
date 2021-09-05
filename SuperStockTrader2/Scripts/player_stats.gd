@@ -10,8 +10,8 @@ var lives_max
 func _ready():
 	health = 100
 	health_max = 100
-	ammo = 1000
-	ammo_max = 1000
+	ammo = 100
+	ammo_max = 150
 	lives = 3
 	lives_max = 5
 

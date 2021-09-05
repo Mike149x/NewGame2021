@@ -36,7 +36,7 @@ func get_input():
 
 func check_hit():
 	if $HitScan.is_colliding():
-		print($HitScan.get_collider().filename)
+		#print($HitScan.get_collider().filename)
 		if $HitScan.get_collider().filename == "res://Scenes/EnemyZombieShooter.tscn":
 			$HitScan.get_collider().hit_zombie()
 		elif $HitScan.get_collider().filename == "res://Scenes/EnemyZombie.tscn":
@@ -109,7 +109,12 @@ func _on_Area_body_entered(body):
 	if body.filename in enemy_list and $InvulnerabilityFrames.is_stopped():
 		$InvulnerabilityFrames.start()
 		PlayerStats.change_health(-50)
-
+	if body.filename == "res://Scenes/Medkit.tscn":
+		PlayerStats.change_health(15)
+		body.queue_free()
+	if body.filename == "res://Scenes/AmmoBox.tscn":
+		PlayerStats.change_ammo(50)
+		body.queue_free()
 
 
 

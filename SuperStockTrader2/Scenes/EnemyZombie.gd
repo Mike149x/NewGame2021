@@ -5,7 +5,8 @@ var player
 var follow_player = false
 var move_speed = 100
 var health = 2
-
+var ammo_box = preload("res://Scenes/AmmoBox.tscn")
+var medkit = preload("res://Scenes/Medkit.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -18,6 +19,15 @@ func _ready():
 func hit_zombie():
 	health -= 1
 	if health <= 0:
+		if floor(rand_range(0, 5)) == 0:
+			if floor(rand_range(0, 2)) == 0:
+				var new_medkit = medkit.instance()
+				new_medkit.global_transform = global_transform
+				get_parent().add_child(new_medkit)
+			else:
+				var new_ammo_box = ammo_box.instance()
+				new_ammo_box.global_transform = global_transform
+				get_parent().add_child(new_ammo_box)
 		#play animation and yield until finished
 		#$SlowZombie/AnimationPlayer.play("Death")
 		#yield($SlowZombie/AnimationPlayer, "finished")
