@@ -13,7 +13,7 @@ var move_vector = Vector3.ZERO
 var cursor_pos = Vector3.ZERO
 var can_fire = true
 
-func look_at_cursor():
+func look_at_cursor():   #character looks at mouse
 	var player_pos = global_transform.origin
 	var drop_plane = Plane(Vector3(0, 1, 0), player_pos.y)
 	var ray_length = 1000
@@ -25,7 +25,7 @@ func look_at_cursor():
 	look_at(cursor_pos, Vector3.UP)
 	
 
-func get_input():
+func get_input():   #gets movement input and stores it
 	var input = Vector3(
 		-int(Input.is_action_pressed("ui_left")) + int(Input.is_action_pressed("ui_right")),
 		0,
@@ -34,7 +34,7 @@ func get_input():
 	input = input.normalized()
 	return input
 
-func check_hit():
+func check_hit(): #this is the function that gets called to see if player shoots an enemy
 	if $HitScan.is_colliding():
 		#print($HitScan.get_collider().filename)
 		if $HitScan.get_collider().filename == "res://Scenes/EnemyZombieShooter.tscn":
@@ -43,12 +43,12 @@ func check_hit():
 			$HitScan.get_collider().hit_zombie()
 		
 
-func _process(delta):
+func _process(delta):  #Shooting
 	if Input.is_action_pressed("player_fire") and can_fire and PlayerStats.has_ammo():
 		PlayerStats.change_ammo(-1)
 		check_hit()
 		
-		can_fire = false
+		can_fire = false #spawning ammo casing
 		var new_case = case.instance()
 		new_case.global_transform = $CaseEjector.global_transform
 		get_parent().add_child(new_case)
@@ -67,7 +67,7 @@ func _process(delta):
 		if $ChainGunTimer.get_wait_time() > 0.3:
 			$ChainGunTimer.set_wait_time(0.3)
 		
-	if PlayerStats.get_health() <= 0:
+	if PlayerStats.get_health() <= 0: #if player dies resets level
 		get_tree().reload_current_scene()
 		PlayerStats.change_lives(-1)
 		PlayerStats.reset()
@@ -113,7 +113,7 @@ func _on_Area_body_entered(body):
 		PlayerStats.change_health(15)
 		body.queue_free()
 	if body.filename == "res://Scenes/AmmoBox.tscn":
-		PlayerStats.change_ammo(50)
+		PlayerStats.change_ammo(25)
 		body.queue_free()
 
 

@@ -6,12 +6,13 @@ var ammo
 var ammo_max
 var lives
 var lives_max
+var current_level = 1
 
 func _ready():
-	health = 100
+	health = 85
 	health_max = 100
-	ammo = 100
-	ammo_max = 150
+	ammo = 50
+	ammo_max = 100
 	lives = 3
 	lives_max = 5
 
@@ -41,8 +42,11 @@ func has_ammo():
 
 func reset():
 	health = health_max
+	ammo = ammo_max
 
-
+func change_level():
+	current_level += 1
+	get_tree().change_scene("res://Scenes/TestLevel" + str(current_level) + ".tscn")
 
 
 

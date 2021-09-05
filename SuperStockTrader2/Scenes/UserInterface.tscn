@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UserInterface.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Ammo Counter proper.png" type="Texture" id=2]
@@ -24,6 +24,21 @@ bg_color = Color( 0, 0, 0, 0.282353 )
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.796078, 0.847059, 0.145098, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 3
+border_width_bottom = 4
+border_color = Color( 0.788235, 0.741176, 0.215686, 1 )
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 0.282353 )
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
 [node name="UserInterface" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -33,10 +48,10 @@ __meta__ = {
 }
 
 [node name="AmmoCount" type="Label" parent="."]
-margin_left = 863.462
-margin_top = 19.0703
-margin_right = 999.462
-margin_bottom = 68.0703
+margin_left = 853.329
+margin_top = 75.2898
+margin_right = 989.329
+margin_bottom = 124.29
 custom_fonts/font = SubResource( 1 )
 text = "x 1000"
 __meta__ = {
@@ -86,6 +101,19 @@ margin_bottom = 60.0
 custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
 value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AmmoBar" type="ProgressBar" parent="."]
+margin_left = 624.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 60.0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
+value = 60.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false

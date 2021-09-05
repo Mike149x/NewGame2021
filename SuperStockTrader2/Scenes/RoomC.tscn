@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/WallPanel1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/FloorPanel.tscn" type="PackedScene" id=2]
 
-[node name="Room1" type="Spatial"]
+[node name="RoomC" type="Spatial"]
 
 [node name="WallPanel1" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
@@ -25,9 +25,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6 )
 
 [node name="WallPanel8" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4 )
-
-[node name="WallPanel9" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2 )
 
 [node name="WallPanel10" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
