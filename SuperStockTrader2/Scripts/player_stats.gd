@@ -7,6 +7,8 @@ var ammo_max
 var lives
 var lives_max
 var current_level = 1
+#var gun_damage
+
 
 func _ready():
 	health = 85
@@ -15,6 +17,11 @@ func _ready():
 	ammo_max = 100
 	lives = 3
 	lives_max = 5
+	#gun_damage = 1
+
+#func _process(delta):
+	#if ammo <= 0:
+		#var gun_damage = 0.5
 
 func change_health(amount):
 	health += amount
@@ -36,6 +43,9 @@ func get_ammo():
 
 func get_lives():
 	return str(lives)
+
+#func get_gun_damage():
+	#return(gun_damage)
 
 func has_ammo():
 	return ammo > 0

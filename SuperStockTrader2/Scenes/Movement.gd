@@ -4,10 +4,14 @@ onready var camera = get_parent().get_node("Camera")
 onready var tracer = preload("res://Scenes/TracerFire.tscn")
 onready var case = preload("res://Scenes/BulletCase.tscn")
 var enemy_list = ["res://Scenes/EnemyZombie.tscn", "res://Scenes/EnemyZombieShooter.tscn"]
+onready var spark = preload("res://Scenes/Spark.tscn")
+
 export var max_speed = 10
 export var friction = 10
 export var speed = 1
 export var acceleration = 0.1
+
+
 
 var move_vector = Vector3.ZERO
 var cursor_pos = Vector3.ZERO
@@ -41,6 +45,11 @@ func check_hit(): #this is the function that gets called to see if player shoots
 			$HitScan.get_collider().hit_zombie()
 		elif $HitScan.get_collider().filename == "res://Scenes/EnemyZombie.tscn":
 			$HitScan.get_collider().hit_zombie()
+		else:
+			var s = spark.instance()
+			s.global_transform.origin = $HitScan.get_collision_point()
+			s.set_emitting(true)
+			get_parent().add_child(s)
 		
 
 func _process(delta):  #Shooting

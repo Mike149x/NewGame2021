@@ -7,6 +7,8 @@ var move_speed = 100
 var health = 2
 var ammo_box = preload("res://Scenes/AmmoBox.tscn")
 var medkit = preload("res://Scenes/Medkit.tscn")
+onready var blood = preload("res://Scenes/BloodSpray.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -18,7 +20,13 @@ func _ready():
 
 func hit_zombie():
 	health -= 1
+	#health -= PlayerStats.get_gun_damage()
 	if health <= 0:
+		var b = blood.instance()
+		b.global_transform = global_transform
+		get_parent().add_child(b)
+		b.set_emitting(true)
+		
 		if floor(rand_range(0, 5)) == 0:
 			if floor(rand_range(0, 2)) == 0:
 				var new_medkit = medkit.instance()

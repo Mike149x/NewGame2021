@@ -11,5 +11,6 @@ func _process(delta):
 	$AmmoCount.text = "x " + PlayerStats.get_ammo()
 	$LifeCounter.text = PlayerStats.get_lives()
 	$AmmoBar.value = int(PlayerStats.get_ammo())
+	
 
 
