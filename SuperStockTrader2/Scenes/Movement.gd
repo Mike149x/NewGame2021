@@ -111,6 +111,7 @@ func _on_ChainGunTimer_timeout():
 func _on_Area_area_entered(area ):
 	if area.get_parent().filename == "res://Scenes/EnemyBullet.tscn":
 		PlayerStats.change_health(-5)
+		SoundPlayer.play("res://Sounds/001.wav")
 		area.get_parent().queue_free()
 
 
@@ -118,10 +119,13 @@ func _on_Area_body_entered(body):
 	if body.filename in enemy_list and $InvulnerabilityFrames.is_stopped():
 		$InvulnerabilityFrames.start()
 		PlayerStats.change_health(-50)
+		SoundPlayer.play("res://Sounds/001.wav")
 	if body.filename == "res://Scenes/Medkit.tscn":
+		SoundPlayer.play("res://Sounds/Jump_002.wav")
 		PlayerStats.change_health(15)
 		body.queue_free()
 	if body.filename == "res://Scenes/AmmoBox.tscn":
+		SoundPlayer.play("res://Sounds/Jump_004.wav")
 		PlayerStats.change_ammo(25)
 		body.queue_free()
 

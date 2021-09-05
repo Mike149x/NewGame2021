@@ -57,6 +57,7 @@ func reset():
 func change_level():
 	current_level += 1
 	get_tree().change_scene("res://Scenes/TestLevel" + str(current_level) + ".tscn")
+	SoundPlayer.play("res://Sounds/Laser_004.wav")
 
 
 

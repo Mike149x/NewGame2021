@@ -17,6 +17,7 @@ config/icon="res://Resources/icon.png"
 [autoload]
 
 PlayerStats="*res://Scripts/player_stats.gd"
+SoundPlayer="*res://Scripts/sound_player.gd"
 
 [input]
 

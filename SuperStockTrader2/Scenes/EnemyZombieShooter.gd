@@ -24,6 +24,7 @@ func hit_zombie():
 	health -= 1
 	#health -= PlayerStats.get_gun_damage()
 	if health <= 0:
+		SoundPlayer.play("res://Sounds/Explosion_001.wav")
 		var b = blood.instance()
 		b.global_transform = global_transform
 		get_parent().add_child(b)
