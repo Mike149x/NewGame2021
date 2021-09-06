@@ -11,14 +11,13 @@ config_version=4
 [application]
 
 config/name="SuperStockTrader2"
-run/main_scene="res://Scenes/TitleScreen.tscn"
+run/main_scene="res://Scenes/TestLevel1.tscn"
 config/icon="res://Resources/icon.png"
 
 [autoload]
 
 PlayerStats="*res://Scripts/player_stats.gd"
 SoundPlayer="*res://Scripts/sound_player.gd"
-UserInterface="*res://UserInterface.gd"
 
 [input]
 
