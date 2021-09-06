@@ -77,10 +77,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 21 )
 
 [node name="LevelLayout1" parent="." instance=ExtResource( 6 )]
 
-[node name="UserInterface" parent="." instance=ExtResource( 1 )]
-
 [node name="Medkit" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 
 [node name="AmmoBox" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+
+[node name="UserInterface" parent="." instance=ExtResource( 1 )]
