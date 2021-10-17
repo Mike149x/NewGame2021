@@ -1,11 +1,13 @@
 extends KinematicBody
 
+#nodes we need to call later on
 onready var camera = get_parent().get_node("Camera")
 onready var tracer = preload("res://Scenes/TracerFire.tscn")
 onready var case = preload("res://Scenes/BulletCase.tscn")
 var enemy_list = ["res://Scenes/EnemyZombie.tscn", "res://Scenes/EnemyZombieShooter.tscn"]
 onready var spark = preload("res://Scenes/Spark.tscn")
 
+#we export these variables to make testing easier
 export var max_speed = 10
 export var friction = 10
 export var speed = 1
@@ -87,6 +89,7 @@ func _physics_process(delta):
 		speed += acceleration
 		if speed > max_speed:
 			speed = max_speed
+	#THE BELOW SECTION RESETS ACCELERATION... REMOVED BECAUSE MAKES GAME TOO SLOW
 	#else:
 		#speed -= acceleration
 		#if speed < 0:
@@ -99,6 +102,7 @@ func _physics_process(delta):
 	else:
 		$MainCharacter/AnimationPlayer.play("Idle")
 	move_and_slide(move_vector)
+	#Makes movement more fluid - ensures moving diagonally doesn't make character go twice as fast
 
 	look_at_cursor()
 
