@@ -82,11 +82,16 @@ func _process(delta):  #Shooting
 		PlayerStats.reset()
 
 func _physics_process(delta):
+	#The player has to gain momentum
 	var input = get_input()
 	if input != Vector3.ZERO:
 		speed += acceleration
 		if speed > max_speed:
 			speed = max_speed
+	
+	#This part means everytime the player stops, he loses momentum....
+	
+	#makes game too slow
 	#else:
 		#speed -= acceleration
 		#if speed < 0:
@@ -109,24 +114,30 @@ func _on_ChainGunTimer_timeout():
 
 
 func _on_Area_area_entered(area ):
+	#If player gets hit by projectile
 	if area.get_parent().filename == "res://Scenes/EnemyBullet.tscn":
+		#projectiles do 5 damge
 		PlayerStats.change_health(-5)
 		SoundPlayer.play("res://Sounds/001.wav")
 		area.get_parent().queue_free()
 
 
 func _on_Area_body_entered(body):
+	#If player gets touched by various things, whie not invulnerable
 	if body.filename in enemy_list and $InvulnerabilityFrames.is_stopped():
 		$InvulnerabilityFrames.start()
 		PlayerStats.change_health(-50)
+		#50 dmg from melee damge
 		SoundPlayer.play("res://Sounds/001.wav")
 	if body.filename == "res://Scenes/Medkit.tscn":
 		SoundPlayer.play("res://Sounds/Jump_002.wav")
 		PlayerStats.change_health(15)
+		#medkit heals 15hp
 		body.queue_free()
 	if body.filename == "res://Scenes/AmmoBox.tscn":
 		SoundPlayer.play("res://Sounds/Jump_004.wav")
 		PlayerStats.change_ammo(25)
+		#ammo box gives 25 ammo
 		body.queue_free()
 
 
