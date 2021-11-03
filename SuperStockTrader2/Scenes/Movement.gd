@@ -3,7 +3,7 @@ extends KinematicBody
 onready var camera = get_parent().get_node("Camera")
 onready var tracer = preload("res://Scenes/TracerFire.tscn")
 onready var case = preload("res://Scenes/BulletCase.tscn")
-var enemy_list = ["res://Scenes/EnemyZombie.tscn", "res://Scenes/EnemyZombieShooter.tscn"]
+var enemy_list = ["res://Scenes/EnemyZombie.tscn", "res://Scenes/EnemyZombieShooter.tscn", "res://Scenes/EnemySpinningShooter.tscn"]
 onready var spark = preload("res://Scenes/Spark.tscn")
 
 export var max_speed = 10
@@ -40,11 +40,14 @@ func get_input():   #gets movement input and stores it
 
 func check_hit(): #this is the function that gets called to see if player shoots an enemy
 	if $HitScan.is_colliding():
-		#print($HitScan.get_collider().filename)
+		print($HitScan.get_collider().filename)
 		if $HitScan.get_collider().filename == "res://Scenes/EnemyZombieShooter.tscn":
 			$HitScan.get_collider().hit_zombie()
 		elif $HitScan.get_collider().filename == "res://Scenes/EnemyZombie.tscn":
 			$HitScan.get_collider().hit_zombie()
+		elif $HitScan.get_collider().filename == "res://Scenes/EnemySpinningShooter.tscn":
+			$HitScan.get_collider().hit_zombie()
+			
 		else:
 			var s = spark.instance()
 			s.global_transform.origin = $HitScan.get_collision_point()

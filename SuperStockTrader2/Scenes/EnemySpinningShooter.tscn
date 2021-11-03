@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/EnemySpinningShooter.gd" type="Script" id=1]
 
 [sub_resource type="CylinderMesh" id=1]
 
 [sub_resource type="CylinderShape" id=2]
+radius = 1.4
 
 [sub_resource type="CylinderShape" id=3]
 radius = 9.0
 height = 0.6
+
+[sub_resource type="PrismMesh" id=4]
 
 [node name="EnemySpinningShooter" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -30,31 +33,59 @@ shape = SubResource( 3 )
 [node name="LauncherN" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1 )
 
+[node name="LauncherE" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0 )
+
+[node name="LauncherS" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
+
+[node name="LauncherW" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0 )
+
 [node name="RayCastN" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 enabled = true
 cast_to = Vector3( 0, 0, -10 )
-
-[node name="LauncherE" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0 )
 
 [node name="RayCastE" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 enabled = true
 cast_to = Vector3( 10, 0, 0 )
 
-[node name="LauncherW" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
-
-[node name="RayCastW" type="RayCast" parent="."]
+[node name="RayCastS" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 enabled = true
 cast_to = Vector3( 0, 0, 10 )
 
-[node name="LauncherS" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0 )
-
-[node name="RayCastS" type="RayCast" parent="."]
+[node name="RayCastW" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 enabled = true
 cast_to = Vector3( -10, 0, 0 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="ArrowN" type="MeshInstance" parent="."]
+transform = Transform( 0.5, 0, 0, 0, -1.31134e-08, 0.4, 0, -0.3, -1.74846e-08, 0, 1, -1 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="ArrowE" type="MeshInstance" parent="."]
+transform = Transform( 5.96244e-09, 0.3, 1.74846e-08, 0, -1.31134e-08, 0.4, 0.5, -3.57746e-09, -2.08501e-16, 1, 1, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="ArrowS" type="MeshInstance" parent="."]
+transform = Transform( -0.5, -2.62268e-08, -1.52855e-15, 0, -1.31134e-08, 0.4, -4.37114e-08, 0.3, 1.74846e-08, 0, 1, 1 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="ArrowW" type="MeshInstance" parent="."]
+transform = Transform( -2.18557e-08, -0.3, -1.74846e-08, 0, -1.31134e-08, 0.4, -0.5, 1.31134e-08, 7.64274e-16, -1, 1, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

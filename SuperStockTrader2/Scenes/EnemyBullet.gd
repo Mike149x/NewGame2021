@@ -26,5 +26,6 @@ func _process(delta):
 
 
 func _on_Area_body_entered(body):
-	if body.filename != "res://Scenes/EnemyZombieShooter.tscn":
+	if body.filename != "res://Scenes/EnemyZombieShooter.tscn" and body.filename != "res://Scenes/EnemySpinningShooter.tscn":
 		queue_free()
+	
