@@ -11,14 +11,14 @@ onready var bullet = preload("res://Scenes/EnemyBullet.tscn")
 var ammo_box = preload("res://Scenes/AmmoBox.tscn")
 var medkit = preload("res://Scenes/Medkit.tscn")
 onready var blood = preload("res://Scenes/BloodSpray.tscn")
-var rot_speed = rad2deg(30) #30deg/sec
+
 
 
 
 func _physics_process(delta):
-	var rot_speed = rad2deg(30) #30deg/sec
 	if follow_player == true:
-		#set_rot(rot_speed * delta)
+		#rotation_degrees.y -= 1
+		
 		var pos = player.global_transform.origin
 		var facing = -global_transform.basis.z
 		look_at(pos, Vector3.UP)
