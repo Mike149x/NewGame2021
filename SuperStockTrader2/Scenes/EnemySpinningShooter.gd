@@ -7,7 +7,7 @@ var move_speed = 20
 var can_shoot = false
 var health = 3
 #establishing nodes we will be calling, as variables
-onready var bullet = preload("res://Scenes/EnemyBullet.tscn")
+onready var bullet = preload("res://Scenes/SpinningEnemyBullet.tscn")
 var ammo_box = preload("res://Scenes/AmmoBox.tscn")
 var medkit = preload("res://Scenes/Medkit.tscn")
 onready var blood = preload("res://Scenes/BloodSpray.tscn")
