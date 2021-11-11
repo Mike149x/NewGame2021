@@ -17,7 +17,8 @@ var move_vector = Vector3.ZERO
 var cursor_pos = Vector3.ZERO
 var can_fire = true
 
-func look_at_cursor():   #character looks at mouse
+#character looks at mouse
+func look_at_cursor():   
 	var player_pos = global_transform.origin
 	var drop_plane = Plane(Vector3(0, 1, 0), player_pos.y)
 	var ray_length = 1000
@@ -29,7 +30,8 @@ func look_at_cursor():   #character looks at mouse
 	look_at(cursor_pos, Vector3.UP)
 	
 
-func get_input():   #gets movement input and stores it
+ #gets movement input and stores it
+func get_input(): 
 	var input = Vector3(
 		-int(Input.is_action_pressed("ui_left")) + int(Input.is_action_pressed("ui_right")),
 		0,
@@ -38,7 +40,9 @@ func get_input():   #gets movement input and stores it
 	input = input.normalized()
 	return input
 
-func check_hit(): #this is the function that gets called to see if player shoots an enemy
+#this is the function that gets called to see if player shoots an enemy
+#Checks to see if bullet is colliding with the 3 enemy types
+func check_hit(): 
 	if $HitScan.is_colliding():
 		print($HitScan.get_collider().filename)
 		if $HitScan.get_collider().filename == "res://Scenes/EnemyZombieShooter.tscn":
@@ -55,22 +59,24 @@ func check_hit(): #this is the function that gets called to see if player shoots
 			get_parent().add_child(s)
 		
 
-func _process(delta):  #Shooting
+#Shooting
+func _process(delta):  
+	#On M1 Click - checks to see if can fire
 	if Input.is_action_pressed("player_fire") and can_fire and PlayerStats.has_ammo():
 		PlayerStats.change_ammo(-1)
 		check_hit()
-		
-		can_fire = false #spawning ammo casing
+		#Spawns ammo casing after every shot
+		can_fire = false 
 		var new_case = case.instance()
 		new_case.global_transform = $CaseEjector.global_transform
 		get_parent().add_child(new_case)
 		
-		#add tracer fire
+		#add tracer fire - the actual hitscan bullet
 		var new_tracer = tracer.instance()
 		new_tracer.global_transform = $EndOfChainGun.global_transform
 		get_parent().add_child(new_tracer)
 		
-		#change timer
+		#change timer - this dictates the fire rate
 		if $ChainGunTimer.get_wait_time() > 0.1:
 			$ChainGunTimer.set_wait_time($ChainGunTimer.get_wait_time() - 0.05)
 		$ChainGunTimer.start()
@@ -79,7 +85,8 @@ func _process(delta):  #Shooting
 		if $ChainGunTimer.get_wait_time() > 0.3:
 			$ChainGunTimer.set_wait_time(0.3)
 		
-	if PlayerStats.get_health() <= 0: #if player dies resets level
+	#if player dies resets level
+	if PlayerStats.get_health() <= 0: 
 		get_tree().reload_current_scene()
 		PlayerStats.change_lives(-1)
 		PlayerStats.reset()
@@ -93,14 +100,15 @@ func _physics_process(delta):
 			speed = max_speed
 	
 	#This part means everytime the player stops, he loses momentum....
-	
 	#makes game too slow
+
 	#else:
 		#speed -= acceleration
 		#if speed < 0:
 			#speed = 0
 	#print(speed)
 	
+	#Plays the 2 animations when player is walking, or just standing
 	move_vector = input * speed
 	if move_vector != Vector3.ZERO:
 		$MainCharacter/AnimationPlayer.play("Run")

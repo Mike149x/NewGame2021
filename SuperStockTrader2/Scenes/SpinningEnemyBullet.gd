@@ -5,14 +5,17 @@ var bullet_speed = 1.5
 var direction
 
 func _ready():
-
+	pass
+	
 	var bullet_pos = global_transform.origin
 	direction = bullet_pos
 	direction = direction.normalized()
 
 
+
 func _process(delta):
 	translate(direction * bullet_speed * delta)
+
 
 
 

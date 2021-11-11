@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/UserInterface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/GameCamera.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Scenes/LevelLayout1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/AmmoBox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Medkit.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/EnemySpinningShooter.tscn" type="PackedScene" id=9]
 
 [node name="Level" type="Spatial"]
 
@@ -85,6 +84,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 
 [node name="AmmoBox" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
-
-[node name="EnemySpinningShooter" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3 )
