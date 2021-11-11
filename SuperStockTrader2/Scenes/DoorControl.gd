@@ -16,6 +16,9 @@ func _ready():
 #	pass
 
 
+#Simple code to open and close doors
+#When doors open, the collision is removed so player can go through,
+#Otherwise collision always on
 func _on_Area_body_entered(body):
 	if body.is_in_group("Player"):
 		$DoorBlocker/CollisionShape.disabled = true

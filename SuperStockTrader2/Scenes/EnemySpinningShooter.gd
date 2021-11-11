@@ -14,7 +14,7 @@ onready var blood = preload("res://Scenes/BloodSpray.tscn")
 
 
 
-
+#Move towards the player
 func _physics_process(delta):
 	if follow_player == true:
 		#rotation_degrees.y -= 1
@@ -26,6 +26,7 @@ func _physics_process(delta):
 			if $RayCastN.get_collider().name == "Player":
 				move_and_slide(facing * move_speed * delta, Vector3.UP)
 
+#Should have 4 projectiles from 4 launchers....
 	if can_shoot:
 		var new_bullet = bullet.instance()
 		new_bullet.global_transform.origin = $LauncherN.global_transform.origin
@@ -40,7 +41,8 @@ func _physics_process(delta):
 	#new_bullet.global_transform.origin = $LauncherN.global_transform.origin
 	
 
-
+#Code when Zombie gets hit
+#Play sound, take damage, check health, die, drop items
 func hit_zombie():
 	health -= 1
 	#health -= PlayerStats.get_gun_damage()

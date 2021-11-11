@@ -137,18 +137,18 @@ func _on_Area_body_entered(body):
 	#If player gets touched by various things, whie not invulnerable
 	if body.filename in enemy_list and $InvulnerabilityFrames.is_stopped():
 		$InvulnerabilityFrames.start()
-		PlayerStats.change_health(-50)
-		#50 dmg from melee damge
+		PlayerStats.change_health(-30)
+		#30 dmg from melee damge
 		SoundPlayer.play("res://Sounds/001.wav")
 	if body.filename == "res://Scenes/Medkit.tscn":
 		SoundPlayer.play("res://Sounds/Jump_002.wav")
-		PlayerStats.change_health(15)
-		#medkit heals 15hp
+		PlayerStats.change_health(25)
+		#medkit heals 25 hp
 		body.queue_free()
 	if body.filename == "res://Scenes/AmmoBox.tscn":
 		SoundPlayer.play("res://Sounds/Jump_004.wav")
-		PlayerStats.change_ammo(25)
-		#ammo box gives 25 ammo
+		PlayerStats.change_ammo(50)
+		#ammo box gives 50 ammo
 		body.queue_free()
 
 

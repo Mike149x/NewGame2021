@@ -9,12 +9,12 @@ var lives_max
 var current_level = 1
 #var gun_damage
 
-
+#Player Stats on startup
 func _ready():
 	health = 85
 	health_max = 100
-	ammo = 50
-	ammo_max = 100
+	ammo = 150
+	ammo_max = 300
 	lives = 3
 	lives_max = 5
 	#gun_damage = 1
@@ -23,6 +23,7 @@ func _ready():
 	#if ammo <= 0:
 		#var gun_damage = 0.5
 
+#Those functions clamp the values, meaning they can't go under 0, or over the max value
 func change_health(amount):
 	health += amount
 	health = clamp(health, 0, health_max)
@@ -35,6 +36,7 @@ func change_lives(amount):
 	lives += amount
 	lives = clamp(lives, 0, lives_max)
 
+#Those get_ functions store the value and lets's us call on it from other scripts
 func get_health():
 	return health
 
@@ -54,6 +56,7 @@ func reset():
 	health = health_max
 	ammo = ammo_max
 
+#This is the code for level transition
 func change_level():
 	current_level += 1
 	get_tree().change_scene("res://Scenes/TestLevel" + str(current_level) + ".tscn")

@@ -6,7 +6,8 @@ var bullet_speed = 2
 var direction
 
 
-# Called when the node enters the scene tree for the first time.
+#This function makes the bullet go towards the player when spawned
+
 func _ready():
 	var player_pos = get_parent().get_node("Player").global_transform.origin
 	player_pos.y += 1
@@ -18,12 +19,9 @@ func _process(delta):
 	translate(direction * bullet_speed * delta)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
-
+#The bullet can phase through other enemy types, only hitting the player
 func _on_Area_body_entered(body):
-	if body.filename != "res://Scenes/EnemyZombieShooter.tscn" and body.filename != "res://Scenes/EnemySpinningShooter.tscn":
+	if body.filename != "res://Scenes/EnemyZombieShooter.tscn" and body.filename != "res://Scenes/EnemyZombie.tscn" and body.filename != "res://Scenes/EnemySpinningShooter.tscn":
 		queue_free()
 	

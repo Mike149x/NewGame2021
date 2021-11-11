@@ -1,7 +1,8 @@
 extends RigidBody
 
 
-
+#This part can be empty because oncethey spawn they just sit
+#there being kicked around by the player
 
 
 
