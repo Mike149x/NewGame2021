@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Door1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/ExitRoom1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/RoomA.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/RoomC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/RoomB.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/RoomAE.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/RoomBE.tscn" type="PackedScene" id=7]
+
+[node name="LevelLayout3" type="Node"]
+
+[node name="RoomC" parent="." instance=ExtResource( 4 )]
+
+[node name="RoomE" parent="." instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 0, -2 )
+
+[node name="RoomB" parent="." instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18, 0, 20 )
+
+[node name="RoomB2" parent="." instance=ExtResource( 5 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -18, 0, 12 )
+
+[node name="RoomD" parent="." instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14, 0, 34 )
+
+[node name="RoomA" parent="." instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, 0, 18 )
+
+[node name="RoomA3" parent="." instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16, 0, 2 )
+
+[node name="RoomA2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 40, 0, 16 )
+
+[node name="ExitRoom1" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42, 0, 4 )
+
+[node name="Door1" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42, 0, 9 )
+
+[node name="Door2" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 9 )
+
+[node name="Door3" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18, 0, 9 )
+
+[node name="Door5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2 )
+
+[node name="Door6" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -2 )
+
+[node name="Door7" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 20 )
+
+[node name="Door8" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 20 )
+
+[node name="Door4" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18, 0, 25 )
